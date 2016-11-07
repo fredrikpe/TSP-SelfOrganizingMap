@@ -71,7 +71,7 @@ void MainWindow::on_nEpochsSpinBox_editingFinished()
 void MainWindow::on_openFileButton_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open file"), "~/", tr("City Files (*.txt)"));
+        tr("Open file"), "../src", tr("City Files (*.txt)"));
 
     QFile file(fileName);
 
