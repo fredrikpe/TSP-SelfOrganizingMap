@@ -14,57 +14,65 @@ void Canvas::paintEvent(QPaintEvent *event)
     int y_scalar = rect.bottom() - rect.top() - 2*YPAD;
 
 
-
-    for (auto&& city : som->cities)
+    if (draw_cities)
     {
-        qreal x = x_scalar * city.first +  XPAD;
-        qreal y = y_scalar * city.second + YPAD;
-        p.drawPoint(QPointF(x, y));
+        for (auto&& city : som->cities)
+        {
+            qreal x = x_scalar * city.first +  XPAD;
+            qreal y = y_scalar * city.second + YPAD;
+            p.drawPoint(QPointF(x, y));
+        }
     }
 
-    p.setPen(QPen(Qt::red, 6));
     QPointF prev_point;
     QPointF current_point;
     bool not_first_point = false;
-    for (auto node : som->nodes)
+    if (draw_nodes)
     {
-        qreal x = x_scalar * node.first + XPAD;
-        qreal y = y_scalar * node.second + YPAD;
-        current_point = QPointF(x, y);
-        p.drawPoint(current_point);
-
-        if (not_first_point)
+        p.setPen(QPen(Qt::red, 6));
+        for (auto node : som->nodes)
         {
-            p.setPen(QPen(Qt::black, 1));
-            p.drawLine(prev_point, current_point);
-            p.setPen(QPen(Qt::red, 6));
-        } else {
-            not_first_point = true;
-        }
-
-        prev_point = current_point;
-    }
-
-    // Draw tour
-    p.setPen(QPen(Qt::green, 2));
-    not_first_point = false;
-    if (som->tour_indexes.size() > 0)
-    {
-        for (auto i : som->tour_indexes)
-        {
-            qreal x = x_scalar * som->cities[i].first + XPAD;
-            qreal y = y_scalar * som->cities[i].second + YPAD;
-
+            qreal x = x_scalar * node.first + XPAD;
+            qreal y = y_scalar * node.second + YPAD;
             current_point = QPointF(x, y);
+            p.drawPoint(current_point);
 
             if (not_first_point)
             {
+                p.setPen(QPen(Qt::black, 1));
                 p.drawLine(prev_point, current_point);
+                p.setPen(QPen(Qt::red, 6));
             } else {
                 not_first_point = true;
             }
 
             prev_point = current_point;
+        }
+    }
+
+
+    if (draw_tour)
+    {
+        p.setPen(QPen(Qt::green, 2));
+        not_first_point = false;
+        if (som->tour_indexes.size() > 0)
+        {
+            for (auto i : som->tour_indexes)
+            {
+                qreal x = x_scalar * som->cities[i].first + XPAD;
+                qreal y = y_scalar * som->cities[i].second + YPAD;
+
+                current_point = QPointF(x, y);
+
+                if (not_first_point)
+                {
+                    p.drawLine(prev_point, current_point);
+                } else {
+                    not_first_point = true;
+                }
+
+                prev_point = current_point;
+            }
         }
     }
 

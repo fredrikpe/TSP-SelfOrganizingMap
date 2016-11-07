@@ -56,6 +56,12 @@ private slots:
 
     void on_exponentialInfluenceButton_clicked();
 
+    void on_citiesCheckBox_clicked();
+
+    void on_nodesCheckBox_clicked();
+
+    void on_tourCheckBox_clicked();
+
 private:
 
     Ui::MainWindow *ui;

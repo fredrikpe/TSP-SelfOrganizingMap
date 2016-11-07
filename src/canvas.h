@@ -24,6 +24,10 @@ public:
 
     std::shared_ptr<SelfOrganizingMap> som;
 
+    bool draw_cities = true;
+    bool draw_nodes = true;
+    bool draw_tour = true;
+
 signals:
 
 public slots:

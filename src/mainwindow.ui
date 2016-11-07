@@ -80,6 +80,36 @@
          </widget>
         </item>
         <item>
+         <widget class="QGroupBox" name="groupBox_3">
+          <property name="title">
+           <string>Display options</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="QCheckBox" name="citiesCheckBox">
+             <property name="text">
+              <string>Cities</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="nodesCheckBox">
+             <property name="text">
+              <string>Nodes</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="tourCheckBox">
+             <property name="text">
+              <string>Tour</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
          <widget class="QLabel" name="label">
           <property name="text">
            <string>Estimated number of epochs</string>
@@ -158,7 +188,7 @@
      <x>0</x>
      <y>0</y>
      <width>593</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -46,6 +47,11 @@ public:
     QVBoxLayout *verticalLayout_4;
     QRadioButton *staticInfluenceButton;
     QRadioButton *exponentialInfluenceButton;
+    QGroupBox *groupBox_3;
+    QVBoxLayout *verticalLayout_5;
+    QCheckBox *citiesCheckBox;
+    QCheckBox *nodesCheckBox;
+    QCheckBox *tourCheckBox;
     QLabel *label;
     QSpinBox *numIterationsspinBox;
     QPushButton *oneStepButton;
@@ -122,6 +128,30 @@ public:
 
         verticalLayout_2->addWidget(groupBox_2);
 
+        groupBox_3 = new QGroupBox(centralWidget);
+        groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
+        verticalLayout_5 = new QVBoxLayout(groupBox_3);
+        verticalLayout_5->setSpacing(6);
+        verticalLayout_5->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
+        citiesCheckBox = new QCheckBox(groupBox_3);
+        citiesCheckBox->setObjectName(QStringLiteral("citiesCheckBox"));
+
+        verticalLayout_5->addWidget(citiesCheckBox);
+
+        nodesCheckBox = new QCheckBox(groupBox_3);
+        nodesCheckBox->setObjectName(QStringLiteral("nodesCheckBox"));
+
+        verticalLayout_5->addWidget(nodesCheckBox);
+
+        tourCheckBox = new QCheckBox(groupBox_3);
+        tourCheckBox->setObjectName(QStringLiteral("tourCheckBox"));
+
+        verticalLayout_5->addWidget(tourCheckBox);
+
+
+        verticalLayout_2->addWidget(groupBox_3);
+
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
@@ -176,7 +206,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 593, 25));
+        menuBar->setGeometry(QRect(0, 0, 593, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -201,6 +231,10 @@ public:
         groupBox_2->setTitle(QApplication::translate("MainWindow", "Influence type", 0));
         staticInfluenceButton->setText(QApplication::translate("MainWindow", "Static", 0));
         exponentialInfluenceButton->setText(QApplication::translate("MainWindow", "Exponential", 0));
+        groupBox_3->setTitle(QApplication::translate("MainWindow", "Display options", 0));
+        citiesCheckBox->setText(QApplication::translate("MainWindow", "Cities", 0));
+        nodesCheckBox->setText(QApplication::translate("MainWindow", "Nodes", 0));
+        tourCheckBox->setText(QApplication::translate("MainWindow", "Tour", 0));
         label->setText(QApplication::translate("MainWindow", "Estimated number of epochs", 0));
         oneStepButton->setText(QApplication::translate("MainWindow", "1 step", 0));
         nEpochsButton->setText(QApplication::translate("MainWindow", "N epochs", 0));

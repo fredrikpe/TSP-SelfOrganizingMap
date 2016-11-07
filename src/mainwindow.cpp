@@ -13,18 +13,18 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
-
     ui->mainLayout->addWidget(canvas);
     ui->mainLayout->setStretch(1, 1);
-
 
     som = std::make_shared<SelfOrganizingMap>();
     canvas->som = som;
 
-    // Init
+    // Init/*
     ui->staticButton->click();
     ui->staticInfluenceButton->click();
+    ui->citiesCheckBox->click();
+    ui->nodesCheckBox->click();
+    ui->tourCheckBox->click();
 
 }
 
@@ -200,4 +200,22 @@ void MainWindow::on_staticInfluenceButton_clicked()
 void MainWindow::on_exponentialInfluenceButton_clicked()
 {
     changeType(som->influence_type, EXPONENTIAL);
+}
+
+void MainWindow::on_citiesCheckBox_clicked()
+{
+    canvas->draw_cities = ui->citiesCheckBox->isChecked();
+    canvas->update();
+}
+
+void MainWindow::on_nodesCheckBox_clicked()
+{
+    canvas->draw_nodes = ui->nodesCheckBox->isChecked();
+    canvas->update();
+}
+
+void MainWindow::on_tourCheckBox_clicked()
+{
+    canvas->draw_tour = ui->tourCheckBox->isChecked();
+    canvas->update();
 }
