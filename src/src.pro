@@ -23,9 +23,10 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui
 
-
+# Compiler
+QMAKE_CXX = g++-6
 # FLAGS
-QMAKE_CXXFLAGS += -std=c++14 -Wall -Wextra -fopenmp -g
+QMAKE_CXXFLAGS += -Wall -Wextra -fopenmp -g
 
 LIBS += -fopenmp
 

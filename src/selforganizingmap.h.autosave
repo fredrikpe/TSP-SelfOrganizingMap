@@ -23,7 +23,7 @@ enum DecayType
 class SelfOrganizingMap
 {
 private:
-    static constexpr double LEARNING_RATE = 0.2;
+    double LEARNING_RATE = 0.2;
     int RADIUS;
 
     // Algorithm methods

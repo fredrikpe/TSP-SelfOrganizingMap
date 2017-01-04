@@ -77,7 +77,7 @@ int SelfOrganizingMap::bestMatchingUnitSerialized(const point &city)
     return current_index;
 }
 
-int SelfOrganizingMap::radius()
+int SelfOrganizingMap::radius() const
 {
     switch (decay_type)
     {
@@ -92,23 +92,23 @@ int SelfOrganizingMap::radius()
 }
 
 
-int SelfOrganizingMap::radiusStatic()
+int SelfOrganizingMap::radiusStatic() const
 {
     return 1; //RADIUS / 3;
 }
 
-int SelfOrganizingMap::radiusLinear()
+int SelfOrganizingMap::radiusLinear() const
 {
     int r = RADIUS - epoch * RADIUS / num_of_iterations;
     return r < 0 ? 0 : r;
 }
 
-int SelfOrganizingMap::radiusExponential()
+int SelfOrganizingMap::radiusExponential() const
 {
     return RADIUS * exp(-(double)epoch*4/num_of_iterations);
 }
 
-double SelfOrganizingMap::learningRate()
+double SelfOrganizingMap::learningRate() const
 {
     switch (decay_type)
     {
@@ -122,24 +122,24 @@ double SelfOrganizingMap::learningRate()
     throw logic_error("Decay type not found!");
 }
 
-double SelfOrganizingMap::learningRateStatic()
+double SelfOrganizingMap::learningRateStatic() const
 {
     return LEARNING_RATE;
 }
 
-double SelfOrganizingMap::learningRateLinear()
+double SelfOrganizingMap::learningRateLinear() const
 {
     double rate = LEARNING_RATE - (double)epoch * 0.5 * LEARNING_RATE / num_of_iterations;
     return rate < 0 ? 0 : rate;
 }
 
-double SelfOrganizingMap::learningRateExponential()
+double SelfOrganizingMap::learningRateExponential() const
 {
     return LEARNING_RATE * exp(-(double)epoch/(num_of_iterations * 4));
 }
 
 
-std::vector<int> SelfOrganizingMap::neighborhood(int bmu_index)
+std::vector<int> SelfOrganizingMap::neighborhood(int bmu_index) const
 {
     std::vector<int> neighborhood_indexes;
 
@@ -152,7 +152,7 @@ std::vector<int> SelfOrganizingMap::neighborhood(int bmu_index)
     return neighborhood_indexes;
 }
 
-double SelfOrganizingMap::influence(const point &node, const point &bmu)
+double SelfOrganizingMap::influence(const point &node, const point &bmu) const
 {
     switch (influence_type)
     {
@@ -167,12 +167,12 @@ double SelfOrganizingMap::influence(const point &node, const point &bmu)
     throw logic_error("Influence type not found!");
 }
 
-double SelfOrganizingMap::influenceStatic()
+double SelfOrganizingMap::influenceStatic() const
 {
     return 1;
 }
 
-double SelfOrganizingMap::influenceGaussian(const point &node, const point &bmu)
+double SelfOrganizingMap::influenceGaussian(const point &node, const point &bmu) const
 {
     if (epoch_radius == 0)
     {
@@ -236,17 +236,17 @@ void SelfOrganizingMap::calculateTourDistance()
 }
 
 
-double SelfOrganizingMap::euclideanDistance(const point &a, const point &b)
+double SelfOrganizingMap::euclideanDistance(const point &a, const point &b) const
 {
     return sqrt(euclideanNorm(a, b));
 }
 
-double SelfOrganizingMap::euclideanNorm(const point &a, const point &b)
+double SelfOrganizingMap::euclideanNorm(const point &a, const point &b) const
 {
     return pow(a.first - b.first, 2) + pow(a.second - b.second, 2);
 }
 
-double SelfOrganizingMap::euclideanDistanceScaled(const point &a, const point &b)
+double SelfOrganizingMap::euclideanDistanceScaled(const point &a, const point &b) const
 {
     return sqrt(pow((a.first - b.first) * x_scaling, 2) + pow((a.second - b.second) * y_scaling, 2));
 }
